@@ -3,10 +3,7 @@ package com.test1.demo.controller;
 import com.test1.demo.dto.UserDTO;
 import com.test1.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,8 +14,13 @@ public class UserController {
     @Autowired
     private UserService userService; //inject UserService for business logic
 
-    @GetMapping("/getUser")
-    public List<UserDTO> getUser() {
+    @GetMapping("/getusers") //  can get table data when this called
+    public List<UserDTO> getUsers() {
         return userService.getAllUsers(); //fetch all users and return as DTO list
     }
+    @PostMapping("/adduser")                                            //endpoint to add new user
+    public UserDTO saveUser(@RequestBody UserDTO userDTO){              //save new user from request body
+        return userService.saveUser(userDTO);                           //save user and return saved DTO
+    }
+
 }

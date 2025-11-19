@@ -6,13 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//create a table in database
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class User {
-    @Id     //primary key
+public class User {                     //create a table in database
+    @Id                                 //primary key
     private int id;
     private String name;
 
